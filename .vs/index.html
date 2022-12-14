@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <input type="button" value="click" id="btn">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1">id</div>
+            <div class="col-md-3">name</div>
+            <div class="col-md-4">username</div>
+            <div class="col-md-4">Email</div>
+        </div>
+            <div class="row">
+                <div class="col-md-1" class="c1"></div>
+                <div class="col-md-3" class="c2"></div>
+                <div class="col-md-4" class="c3"></div>
+                <div class="col-md-4" class="c4"></div>
+            </div>
+    </div>
+
+    <script>
+        let b = document.getElementById("btn");
+        b.addEventListener("click", function () {
+            getdata();
+        });
+        function getdata() {
+            fetch("https://jsonplaceholder.typicode.com/users/1").
+                then(response => response.json()).
+                then(data => handledata(data));
+        }
+        function handledata(data) {
+            // let t = document.getElementsByClassName("r");
+            // for (let i in  data) {
+            //     let r =
+            //         `<div class="row">
+            //             <div class="col-md-1" id="c1">${data.id}</div>
+            //             <div class="col-md-3" id="c2">${data.name}</div>
+            //             <div class="col-md-4" id="c3">${data.username}</div>
+            //             <div class="col-md-4" id="c4">${data.email}</div>
+            //         </div>`
+            //     t.innerHTML += r
+            //     }
+            let a = document.getElementsByClassName("c1");
+            a.innerHTML=data.id
+            let b =document.getElementsByClassName("c2");
+            b.innerHTML=data.name
+            let c = document.getElementsByClassName("c3");
+            c.innerHTML=data.username
+            let d = document.getElementById("c4");
+            d.innerHTML=data.email
+            }
+    </script>
+</body>
+
+</html>
